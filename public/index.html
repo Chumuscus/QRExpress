@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>QR Code Generator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>QR Code Generator</h1>
+    <div class="row">
+      <div class="column left">
+        <form id="qrForm">
+          <div class="form-group">
+            <label for="data">Data (URL/Text):</label>
+            <input
+              type="text"
+              id="data"
+              name="data"
+              value="https://moodle.ingenieria.lasalle.mx/course/view.php?id=41"
+              onfocus="if(this.value==='https://moodle.ingenieria.lasalle.mx/course/view.php?id=41'){this.value=''}"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="inverted">Inverted Colors:</label>
+            <input type="checkbox" id="inverted" name="inverted" />
+          </div>
+
+          <div class="form-group">
+            <label for="blockSize">Block Size (px):</label>
+            <input
+              type="number"
+              id="blockSize"
+              name="blockSize"
+              value="10"
+              onfocus="if(this.value==='10'){this.value=''}"
+              min="1"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="radius">Corner Radius (%):</label>
+            <input
+              type="number"
+              id="radius"
+              name="radius"
+              value="0"
+              onfocus="if(this.value==='0'){this.value=''}"
+              min="0"
+              max="100"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="foregroundColor">Foreground Color:</label>
+            <input type="color" id="foregroundColor" name="foregroundColor" value="#000000" />
+          </div>
+
+          <div class="form-group">
+            <label for="backgroundColor">Background Color:</label>
+            <input type="color" id="backgroundColor" name="backgroundColor" value="#ffffff" />
+          </div>
+
+          <div class="form-group">
+            <label for="addImage">Add Center Image:</label>
+            <input type="checkbox" id="addImage" name="addImage" checked />
+          </div>
+
+          <div class="form-group">
+            <label for="image">Image URL:</label>
+            <input
+              type="text"
+              id="image"
+              name="image"
+              value="https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Logo_de_la_Universidad_La_Salle_sin_letras.svg/1200px-Logo_de_la_Universidad_La_Salle_sin_letras.svg.png"
+              onfocus="if(this.value==='https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Logo_de_la_Universidad_La_Salle_sin_letras.svg/1200px-Logo_de_la_Universidad_La_Salle_sin_letras.svg.png'){this.value=''}"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="imageSize">Image Size (% of QR Code):</label>
+            <input
+              type="number"
+              id="imageSize"
+              name="imageSize"
+              value="30"
+              onfocus="if(this.value==='30'){this.value=''}"
+              min="1"
+              max="100"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="imageMargin">Image Margin (px):</label>
+            <input
+              type="number"
+              id="imageMargin"
+              name="imageMargin"
+              value="10"
+              onfocus="if(this.value==='10'){this.value=''}"
+              min="0"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="errorCorrectionLevel">Error Correction Level:</label>
+            <select id="errorCorrectionLevel" name="errorCorrectionLevel">
+              <option value="L">L (Low)</option>
+              <option value="M">M (Medium)</option>
+              <option value="Q">Q (Quartile)</option>
+              <option value="H" selected>H (High)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="format">Format:</label>
+            <select id="format" name="format">
+              <option value="png" selected>PNG</option>
+              <option value="jpeg">JPEG</option>
+              <option value="svg">SVG</option>
+            </select>
+          </div>
+
+          <button type="submit">Generate QR Code</button>
+        </form>
+      </div>
+      <div class="column right">
+        <div id="qrResult">
+          <h2>Generated QR Code:</h2>
+          <img id="qrImage" src="" alt="QR Code" style="display:none;" />
+          <div id="qrSvg" style="display:none;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
